@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday to Me!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background-color: #5D3A00; /* Dark brown background */
+      font-family: 'Roboto', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 320px;
+      height: 400px;
+      background-color: #A0522D; /* Lighter brown frame */
+      margin: 40px auto;
+      border-radius: 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      padding-top: 20px;
+    }
+
+    .header {
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5em;
+      color: #FFD700; /* Gold text */
+      text-shadow: 2px 2px #000;
+      margin-bottom: 10px;
+    }
+
+    .photo {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin: 0 auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 6px solid #fff;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .star {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: radial-gradient(white, rgba(255, 255, 255, 0));
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-10px) scale(1);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(450px) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="star-container">
+    <div class="header">9 July 2025</div>
+    <div class="header">Happy 20th Birthday</div>
+    <div class="photo">
+      <img src="Jonk.jpg" alt="My Birthday Photo">
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('star-container');
+    function createStar() {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.left = Math.random() * 320 + 'px';
+      star.style.animationDuration = (2 + Math.random() * 4) + 's';
+      star.style.opacity = 0.6 + Math.random() * 0.4;
+      star.style.width = star.style.height = (3 + Math.random() * 4) + 'px';
+      container.appendChild(star);
+      setTimeout(() => {
+        star.remove();
+      }, 6000);
+    }
+
+    setInterval(createStar, 120);
+  </script>
+</body>
+</html>
